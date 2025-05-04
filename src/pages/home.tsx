@@ -1,4 +1,4 @@
-function App() {
+function Home() {
   return (
     <>
       <div className="flex flex-col h-screen w-screen items-center justify-center">
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
