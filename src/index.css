@@ -1,4 +1,13 @@
 @import "tailwindcss";
+
+@utility screen {
+  @apply w-screen h-screen;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
 @plugin "daisyui" {
   themes: my --default;
   logs: false;

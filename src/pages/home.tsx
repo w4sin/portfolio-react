@@ -1,9 +1,10 @@
 function Home() {
   return (
     <>
-      <div className="flex flex-col h-screen w-screen items-center justify-center">
-        <h1 className="text-3xl font-bold">Hello world!</h1>
-        <button className="btn btn-primary">Button</button>
+      <div className="screen flex-center flex-col">
+        <h1 className="text-3xl font-bold">
+          {`${import.meta.env.VITE_HELLO || "Hi"} world!`}
+        </h1>
       </div>
     </>
   );
