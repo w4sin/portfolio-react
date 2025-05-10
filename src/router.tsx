@@ -1,6 +1,9 @@
 import { createHashRouter, Navigate } from "react-router";
 
 import Home from "./pages/home";
+
+import Billing from "./pages/billing-app/main";
+
 import NotFoundPage from "./pages/not-found";
 
 const router = createHashRouter([
@@ -11,6 +14,10 @@ const router = createHashRouter([
       {
         path: "home",
         Component: Home,
+      },
+      {
+        path: "billing-app",
+        Component: Billing,
       },
       {
         path: "*",

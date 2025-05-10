@@ -4,6 +4,10 @@
   @apply w-screen h-screen;
 }
 
+@utility full {
+  @apply w-full h-full;
+}
+
 @utility flex-center {
   @apply flex items-center justify-center;
 }
