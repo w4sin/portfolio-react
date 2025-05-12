@@ -5,7 +5,7 @@ export const mockItems = [
         price: 36,
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        imageUrl: "https://scontent.fhdy2-1.fna.fbcdn.net/v/t39.30808-6/481209778_8650062225094444_7555923072736234254_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=MEik67RmD-oQ7kNvwG6tA-v&_nc_oc=AdkMjRPgTjMf0A7EaEl-S8DhiwMRaRklYDXVT4u9-X4KttQ6Tl90TFlvDLveTgHgp7ZebchcGHVCaPsD55r1ROJs&_nc_zt=23&_nc_ht=scontent.fhdy2-1.fna&_nc_gid=uZTo2dLbBC1rTTxKQU2gdw&oh=00_AfKRy0d9Ha0Yw10mrgV5ONKekyhAXY34bPMowUC14TSDyA&oe=68210CBE",
+        imageUrl: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
     },
     {
         id: 2,
@@ -13,7 +13,6 @@ export const mockItems = [
         price: 20,
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        // imageUrl: "https://img.icons8.com/?size=100&id=89786&format=png&color=000000",
         imageUrl: "",
     },
     {
@@ -22,7 +21,7 @@ export const mockItems = [
         price: 40,
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        imageUrl: "https://a.travel-assets.com/findyours-php/viewfinder/images/res40/481000/481689-Ocean-View-Norfolk.jpg",
+        imageUrl: "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp",
     },
     {
         id: 4,

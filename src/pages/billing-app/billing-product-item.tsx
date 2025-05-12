@@ -4,32 +4,36 @@ import { TProduct } from "../../types/product";
 
 import { FaMinus, FaPlus } from "react-icons/fa";
 import NoImage from "../../components/no-image";
+import { useBillingStore } from "../../state-management/billing-store";
 
-const Product = ({ name, price, imageUrl }: TProduct) => {
+const Product = (data: TProduct) => {
+  const { name, price, imageUrl } = data;
+  const { addItem } = useBillingStore();
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const quantity = formData.get("quantity");
+    addItem({ ...data, quantity: parseInt(quantity as string) });
+  };
+
   return (
     <div className="card bg-base-200 shadow-md border border-gray-200 overflow-hidden">
       <ProductImage imageUrl={imageUrl} name={name} />
-      <div className="card-body p-3 justify-evenly gap-0.5">
+      <form
+        onSubmit={onSubmit}
+        className="card-body p-3 justify-evenly gap-0.5"
+      >
         <ProductName name={name} />
         <p className="text-base-content/50 font-bold">{`${price}฿`}</p>
         <div className="divider my-0.5" />
         <div className="flex flex-col">
-          <div className="flex justify-between items-center mb-2">
-            <button className="btn btn-sm btn-success px-2">
-              <FaPlus />
-            </button>
-            <input
-              type="text"
-              className="input input-md w-full text-center mx-2 md:mx-1 lg:mx-2"
-              onFocus={(e) => e.target.select()}
-            />
-            <button className="btn btn-sm btn-error px-2">
-              <FaMinus />
-            </button>
-          </div>
-          <button className="btn btn-success w-full">Add to Billing</button>
+          <ProductQuantity />
+          <button type="submit" className="btn btn-success w-full">
+            Add to Billing
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
@@ -96,6 +100,56 @@ const ProductImage = ({
         />
       )}
     </figure>
+  );
+};
+
+const ProductQuantity = () => {
+  const [value, setValue] = useState<string>("1");
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const parsedValue = parseInt(e.target.value);
+    if (isNaN(parsedValue) || parsedValue < 1) setValue(() => "1");
+    else if (parsedValue > 99) setValue(() => "99");
+    else setValue(() => parsedValue.toString());
+  };
+
+  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => e.target.select();
+
+  const onChangeQuantity = (isPlus: boolean) => () => {
+    const parsedValue = parseInt(value);
+    if (isNaN(parsedValue)) return;
+    if (isPlus) {
+      if (parsedValue < 99) setValue(() => (parsedValue + 1).toString());
+    } else {
+      if (parsedValue > 1) setValue(() => (parsedValue - 1).toString());
+    }
+  };
+
+  return (
+    <div className="flex justify-between items-center mb-2">
+      <button
+        type="button"
+        onClick={onChangeQuantity(false)}
+        className="btn btn-sm btn-error px-2"
+      >
+        <FaMinus />
+      </button>
+      <input
+        name="quantity"
+        value={value}
+        type="text"
+        className="input input-md w-full text-center mx-2 md:mx-1 lg:mx-2"
+        onFocus={onFocus}
+        onChange={onChange}
+      />
+      <button
+        type="button"
+        onClick={onChangeQuantity(true)}
+        className="btn btn-sm btn-success px-2"
+      >
+        <FaPlus />
+      </button>
+    </div>
   );
 };
 

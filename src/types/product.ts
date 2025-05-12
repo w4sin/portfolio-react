@@ -4,3 +4,7 @@ export type TProduct = {
     price: number;
     imageUrl: string;
 };
+
+export type TProductBilling = TProduct & {
+    quantity: number;
+};

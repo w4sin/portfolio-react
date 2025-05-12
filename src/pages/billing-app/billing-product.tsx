@@ -17,7 +17,7 @@ const BillingProduct = () => {
           {mockItems.length <= 0 ? (
             <NoProduct />
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3">
               {mockItems.map((item, index) => (
                 <ProductItem key={index} {...item} />
               ))}
