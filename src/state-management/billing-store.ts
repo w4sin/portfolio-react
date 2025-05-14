@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { TProductBilling } from '../types/product';
+import { TProductBilling } from '../@types/product';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 type BillingState = {

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import { TProduct } from "../../types/product";
+import { TProduct } from "../../@types/product";
 
 import { FaMinus, FaPlus } from "react-icons/fa";
 import NoImage from "../../components/no-image";
 import { useBillingStore } from "../../state-management/billing-store";
+import { LocalizedStrings } from "../../@types/language";
+import { useConfigStore } from "../../state-management/config-store";
 
 const Product = (data: TProduct) => {
   const { name, price, imageUrl } = data;
@@ -38,9 +40,10 @@ const Product = (data: TProduct) => {
   );
 };
 
-const ProductName = ({ name }: { name: string }) => {
+const ProductName = ({ name }: { name: LocalizedStrings }) => {
   const nameRef = useRef<HTMLHeadingElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
+  const { lng } = useConfigStore();
 
   useEffect(() => {
     if (nameRef.current) {
@@ -55,12 +58,12 @@ const ProductName = ({ name }: { name: string }) => {
   return isOverflowing ? (
     <div className="tooltip tooltip-bottom" data-tip={name}>
       <h2 ref={nameRef} className="card-title line-clamp-1 cursor-default">
-        {name}
+        {name[lng]}
       </h2>
     </div>
   ) : (
     <h2 ref={nameRef} className="card-title cursor-default">
-      {name}
+      {name[lng]}
     </h2>
   );
 };
@@ -70,11 +73,12 @@ const ProductImage = ({
   name,
 }: {
   imageUrl: string;
-  name: string;
+  name: LocalizedStrings;
 }) => {
   const [imgState, setImgState] = useState<"loading" | "success" | "error">(
     imageUrl ? "loading" : "error"
   );
+  const { lng } = useConfigStore();
 
   const handleOnLoad = () => {
     setImgState(() => "success");
@@ -94,7 +98,7 @@ const ProductImage = ({
             imgState === "loading" && "skeleton"
           }`}
           src={imageUrl}
-          alt={`${name} image`}
+          alt={`${name[lng]} image`}
           onLoad={handleOnLoad}
           onError={handleOnError}
         />
