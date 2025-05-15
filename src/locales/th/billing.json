@@ -1,0 +1,19 @@
+{
+  "main": {
+    "product": {
+      "title": "สินค้า",
+      "create": "สร้างสินค้า",
+      "add-billing": "เพิ่มในใบเสร็จ"
+    },
+    "summary": {
+      "title": "สรุปรายการ",
+      "table": {
+        "name": "ชื่อ",
+        "quantity": "จำนวน",
+        "price": "ราคา",
+        "total": "รวม",
+        "total_amount": "รวมทั้งหมด"
+      }
+    }
+  }
+}

@@ -4,13 +4,18 @@ import { TProduct } from "../../@types/product";
 
 import { FaMinus, FaPlus } from "react-icons/fa";
 import NoImage from "../../components/no-image";
+
 import { useBillingStore } from "../../state-management/billing-store";
 import { LocalizedStrings } from "../../@types/language";
 import { useConfigStore } from "../../state-management/config-store";
 
+import { useTranslation } from "react-i18next";
+
 const Product = (data: TProduct) => {
   const { name, price, imageUrl } = data;
   const { addItem } = useBillingStore();
+
+  const { t } = useTranslation("billing", { keyPrefix: "main.product" });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,7 +37,7 @@ const Product = (data: TProduct) => {
         <div className="flex flex-col">
           <ProductQuantity />
           <button type="submit" className="btn btn-success w-full">
-            Add to Billing
+            {t("add-billing")}
           </button>
         </div>
       </form>

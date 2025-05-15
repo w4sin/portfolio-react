@@ -1,4 +1,23 @@
 interface Resources {
+  "billing": {
+    "main": {
+      "product": {
+        "title": "Product",
+        "create": "Create Product",
+        "add-billing": "Add to Billing"
+      },
+      "summary": {
+        "title": "Summary",
+        "table": {
+          "name": "Name",
+          "quantity": "Quantity",
+          "price": "Price",
+          "total": "Total",
+          "total_amount": "Total"
+        }
+      }
+    }
+  },
   "common": {
     "button": {
       "ok": "OK",

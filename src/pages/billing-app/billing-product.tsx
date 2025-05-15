@@ -1,17 +1,21 @@
 import { mockItems } from "./__mockup";
 import { BsEmojiDizzy } from "react-icons/bs";
-// import { TProduct } from "../../../types/product";
+
 import ProductItem from "./billing-product-item";
+
+import { useTranslation } from "react-i18next";
 
 const BillingProduct = () => {
   // const mockItems: TProduct[] = [];
+  const { t } = useTranslation("billing", { keyPrefix: "main.product" });
+
   return (
     <div className="flex-center p-3">
       <div className="card full bg-base-100 shadow-lg border border-gray-200">
         <div className="card-body">
           <div className="flex justify-between items-center">
-            <h2 className="card-title ">Product</h2>
-            <button className="btn btn-success w-fit">Create Product</button>
+            <h2 className="card-title ">{t("title")}</h2>
+            <button className="btn btn-success w-fit">{t("create")}</button>
           </div>
           <div className="divider my-1" />
           {mockItems.length <= 0 ? (

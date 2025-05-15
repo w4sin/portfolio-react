@@ -1,8 +1,8 @@
-import { TStringLng } from "./language";
+import { LocalizedStrings } from "./language";
 
 export type TProduct = {
     id: number;
-    name: TStringLng;
+    name: LocalizedStrings;
     price: number;
     imageUrl: string;
 };
