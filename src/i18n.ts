@@ -12,7 +12,6 @@ import billingTh from "./locales/th/billing.json";
 i18n
     .use(initReactI18next)
     .init({
-        debug: true,
         fallbackLng: 'en',
         fallbackNS: 'common',
         resources: {

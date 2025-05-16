@@ -62,4 +62,5 @@ input[type="number"] {
   --border: 1.5px;
   --depth: 1;
   --noise: 0;
+  --card-p: 1rem;
 }

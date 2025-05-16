@@ -10,9 +10,9 @@ const BillingProduct = () => {
   const { t } = useTranslation("billing", { keyPrefix: "main.product" });
 
   return (
-    <div className="flex-center p-3">
+    <div className="flex-center p-1 lg:p-2 lg:pr-1.5">
       <div className="card full bg-base-100 shadow-lg border border-gray-200">
-        <div className="card-body">
+        <div className="card-body lg:p-4">
           <div className="flex justify-between items-center">
             <h2 className="card-title ">{t("title")}</h2>
             <button className="btn btn-success w-fit">{t("create")}</button>

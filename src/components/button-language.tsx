@@ -12,7 +12,7 @@ const ButtonLanguage = () => {
   };
 
   return (
-    <button className="btn btn-primary mt-4" onClick={handleChangeLanguage}>
+    <button className="btn btn-primary m-2 w-fit self-end" onClick={handleChangeLanguage}>
       {t("button.language")}
     </button>
   );

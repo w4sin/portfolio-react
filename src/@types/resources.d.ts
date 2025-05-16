@@ -14,7 +14,8 @@ interface Resources {
           "price": "Price",
           "total": "Total",
           "total_amount": "Total"
-        }
+        },
+        "save": "Save Billing"
       }
     }
   },
