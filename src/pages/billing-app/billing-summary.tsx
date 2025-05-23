@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { useBillingStore } from "../../state-management/billing-store";
-import { useConfigStore } from "../../state-management/config-store";
 
 import { useRef } from "react";
 
 import * as htmlToImage from "html-to-image";
 import download from "downloadjs";
 import LayoutPrinting from "../../components/billing-app/layout-printing";
+import { TLng } from "../../@types/language";
 
 const BillingSummary = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -43,9 +43,11 @@ const BillingSummary = () => {
 
 export const BillingSummaryTable = () => {
   const { items } = useBillingStore();
-  const { lng } = useConfigStore();
 
-  const { t } = useTranslation("billing", { keyPrefix: "main.summary.table" });
+  const {
+    t,
+    i18n: { language: lng },
+  } = useTranslation("billing", { keyPrefix: "main.summary.table" });
 
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -68,7 +70,7 @@ export const BillingSummaryTable = () => {
             key={`summary-table-row-${item.id}`}
             className="text-center [&>td]:p-2"
           >
-            <td className="text-left">{item.name[lng]}</td>
+            <td className="text-left">{item.name[lng as TLng]}</td>
             <td>{item.price}฿</td>
             <td>{item.quantity}</td>
             <td className="text-right">

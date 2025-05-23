@@ -6,8 +6,7 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import NoImage from "../../components/no-image";
 
 import { useBillingStore } from "../../state-management/billing-store";
-import { LocalizedStrings } from "../../@types/language";
-import { useConfigStore } from "../../state-management/config-store";
+import { LocalizedStrings, TLng } from "../../@types/language";
 
 import { useTranslation } from "react-i18next";
 
@@ -25,7 +24,7 @@ const Product = (data: TProduct) => {
   };
 
   return (
-    <div className="card bg-base-200 shadow-md border border-gray-200 overflow-hidden">
+    <div className="card bg-base-200 shadow-md border border-gray-200">
       <ProductImage imageUrl={imageUrl} name={name} />
       <form
         onSubmit={onSubmit}
@@ -45,34 +44,6 @@ const Product = (data: TProduct) => {
   );
 };
 
-const ProductName = ({ name }: { name: LocalizedStrings }) => {
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
-  const { lng } = useConfigStore();
-
-  useEffect(() => {
-    if (nameRef.current) {
-      const lineHeight = parseFloat(
-        window.getComputedStyle(nameRef.current).lineHeight
-      );
-      const isOverflow = nameRef.current.offsetHeight > lineHeight;
-      setIsOverflowing(isOverflow);
-    }
-  }, [name]);
-
-  return isOverflowing ? (
-    <div className="tooltip tooltip-bottom" data-tip={name}>
-      <h2 ref={nameRef} className="card-title line-clamp-1 cursor-default">
-        {name[lng]}
-      </h2>
-    </div>
-  ) : (
-    <h2 ref={nameRef} className="card-title cursor-default">
-      {name[lng]}
-    </h2>
-  );
-};
-
 const ProductImage = ({
   imageUrl,
   name,
@@ -83,7 +54,8 @@ const ProductImage = ({
   const [imgState, setImgState] = useState<"loading" | "success" | "error">(
     imageUrl ? "loading" : "error"
   );
-  const { lng } = useConfigStore();
+  const { i18n } = useTranslation();
+  const lng = i18n.language as TLng;
 
   const handleOnLoad = () => {
     setImgState(() => "success");
@@ -94,7 +66,7 @@ const ProductImage = ({
   };
 
   return (
-    <figure className="flex-none w-64 h-28 max-w-full max-h-28 self-center p-0.5">
+    <figure className="flex-none full max-h-28 self-center p-0.5">
       {imgState === "error" ? (
         <NoImage />
       ) : (
@@ -109,6 +81,35 @@ const ProductImage = ({
         />
       )}
     </figure>
+  );
+};
+
+const ProductName = ({ name }: { name: LocalizedStrings }) => {
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const { i18n } = useTranslation();
+  const lng = i18n.language as TLng;
+
+  useEffect(() => {
+    if (nameRef.current) {
+      const lineHeight = parseFloat(
+        window.getComputedStyle(nameRef.current).lineHeight
+      );
+      const isOverflow = nameRef.current.offsetHeight > lineHeight;
+      setIsOverflowing(isOverflow);
+    }
+  }, [name]);
+
+  return isOverflowing ? (
+    <div className="tooltip tooltip-bottom" data-tip={name[lng]}>
+      <h2 ref={nameRef} className="card-title line-clamp-1 cursor-default">
+        {name[lng]}
+      </h2>
+    </div>
+  ) : (
+    <h2 ref={nameRef} className="card-title cursor-default">
+      {name[lng]}
+    </h2>
   );
 };
 
