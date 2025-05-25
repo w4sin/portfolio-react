@@ -25,7 +25,7 @@ const BillingSummary = () => {
     <div className="flex flex-col full p-1 lg:p-2 lg:pl-1.5">
       <div className="card w-full bg-base-100 shadow-lg border border-gray-200">
         <div className="card-body lg:p-4">
-          <h3 className="text-xl font-bold">{t("title")}</h3>
+          <h3 className="card-title text-xl font-bold">{t("title")}</h3>
           <div className="divider my-2" />
           <BillingSummaryTable />
           <button

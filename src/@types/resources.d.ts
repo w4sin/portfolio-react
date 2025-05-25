@@ -31,6 +31,9 @@ interface Resources {
       "add": "Add",
       "close": "Close",
       "language": "Change Language"
+    },
+    "image": {
+      "alt": "image"
     }
   },
   "home": {

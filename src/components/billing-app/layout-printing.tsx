@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { BillingSummaryTable } from "../../pages/billing-app/billing-summary";
+import { BillingSummaryTable } from "./billing-summary";
 
 const LayoutPrinting = ({
   ref,

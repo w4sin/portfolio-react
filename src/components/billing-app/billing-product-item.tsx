@@ -54,7 +54,7 @@ const ProductImage = ({
   const [imgState, setImgState] = useState<"loading" | "success" | "error">(
     imageUrl ? "loading" : "error"
   );
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation("common", { keyPrefix: "image" });
   const lng = i18n.language as TLng;
 
   const handleOnLoad = () => {
@@ -75,7 +75,9 @@ const ProductImage = ({
             imgState === "loading" && "skeleton"
           }`}
           src={imageUrl}
-          alt={`${name[lng]} image`}
+          alt={`${
+            lng === "en" ? `${name.en} ${t("alt")}` : `${t("alt")}${name[lng]}`
+          }`}
           onLoad={handleOnLoad}
           onError={handleOnError}
         />
